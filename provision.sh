@@ -33,6 +33,8 @@ install_discourse_reqs() {
     apt-get -yy install unattended-upgrades 
 
     apt-get -yy install libpam-cracklib
+
+    apt-get -yy install python3-xtermcolor python3-yaml
 }
 
 install_compose() {
@@ -65,6 +67,15 @@ setup_dockermail() {
 
 start_dockermail() {
     in_dockermail make run-all
+}
+
+install_mailcatcher() {
+    apt-get install -yy build-essential ruby-dev libsqlite3-dev
+    gem install mailcatcher
+}
+
+start_mailcatcher() {
+    mailcatcher
 }
 
 install_docker() {
@@ -129,13 +140,20 @@ bootstrap() {
 
 setup_email() {
     setup_hostname
-    setup_dockermail
+#    setup_dockermail
+    setup_mailcatcher
+}
+
+start_email() {
+#    start_dockermail
+    start_mailcatcher
 }
 
 prepare_setup() {
     install_reqs
     install_compose
-#    setup_email
+    setup_email
+    start_email
 }
 
 finalize_setup() {
