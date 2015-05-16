@@ -118,11 +118,17 @@ send   "rake admin:create\r"
 expect "Email:"
 send   "$dev\r"
 
+expect {
+   "User with this email already exists! Do you want to reset the password for this email? (Y/n)" {
+       send   "Y\r"
+   }
+}
+
 expect "Password:"
 send   "$DEFAULT_PASSWORD\r"
 
 expect "Repeat password:"
-send "$DEFAULT_PASSWORD\r"
+send   "$DEFAULT_PASSWORD\r"
 
 expect "Do you want to grant Admin privileges to this account? (Y/n)"
 send   "Y\r"
