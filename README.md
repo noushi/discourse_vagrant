@@ -26,6 +26,10 @@ Server hostname will be changed to the value of `DISCOURSE_HOSTNAME` in `config`
 
 4. profit!
 
+# Gotchas
+
+- `config` has to end with a single newline.
+
 # Supported OSes
 
 - `Ubuntu 14.04LTS`

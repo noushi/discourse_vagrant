@@ -53,6 +53,9 @@ setup_hostname() {
     service hostname restart
 }
 
+setup_hosts() {
+    echo -e "127.0.0.1\t$DISCOURSE_HOSTNAME" >>/etc/hosts
+}
 
 setup_dockermail() {
     mkdir -p /var/dockermail
@@ -69,13 +72,13 @@ start_dockermail() {
     in_dockermail make run-all
 }
 
-install_mailcatcher() {
+setup_mailcatcher() {
     apt-get install -yy build-essential ruby-dev libsqlite3-dev
     gem install mailcatcher
 }
 
 start_mailcatcher() {
-    mailcatcher
+    mailcatcher --ip 0.0.0.0
 }
 
 install_docker() {
@@ -152,6 +155,7 @@ start_email() {
 prepare_setup() {
     install_reqs
     install_compose
+    setup_hosts
     setup_email
     start_email
 }
