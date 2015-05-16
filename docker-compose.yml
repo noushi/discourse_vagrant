@@ -1,0 +1,9 @@
+mailer:
+  image: cpuguy83/mail
+  ports:
+    - "25:25"
+    - "143:143"
+    - "993:993"
+#  environment:
+#    - maildomain=mailer
+#    - smtp_user=user:pwd
