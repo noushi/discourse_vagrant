@@ -19,8 +19,8 @@ Server hostname will be changed to the value of `DISCOURSE_HOSTNAME` in `config`
 1. Change `config` to fit your needs.
 
 2. Either:
-   i. run `provision.sh` and access Discourse on port 80
-   i. run `vagrant up` and access Discourse on port 8080
+   1. run `provision.sh` and access Discourse on port 80
+   1. run `vagrant up` and access Discourse on port 8080
 
 3. connect to Discourse using the email(s)/password stored in `DISCOURSE_DEVELOPER_EMAILS` and `DEFAULT_PASSWORD`
 
